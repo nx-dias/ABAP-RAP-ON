@@ -1,0 +1,6 @@
+@EndUserText.label: 'Definição de projeção de dados'
+define service ZSR_TRAVEL_GDS_ {
+  expose YGDS_C_BookingSupp_m;
+  expose YGDS_C_Booking_m;
+  expose YGDS_C_Travel_m;
+}

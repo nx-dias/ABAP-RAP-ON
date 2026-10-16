@@ -1,0 +1,6 @@
+CLASS zbp_gds_i_booking_m DEFINITION PUBLIC ABSTRACT FINAL
+    FOR BEHAVIOR OF ygds_i_travel_m.
+ENDCLASS.
+
+CLASS zbp_gds_i_booking_m IMPLEMENTATION.
+ENDCLASS.

@@ -1,0 +1,52 @@
+managed ;
+strict ( 2 );
+
+define behavior for YGDS_I_Travel_m implementation in class zbp_gds_i_travel_m unique //alias <alias_name>
+persistent table ygds_travel_m
+lock master
+authorization master ( instance )
+early numbering
+//etag master <field_name>
+{
+  field (readonly) travel_id;
+  create;
+  update;
+  delete;
+  association _Booking { create; }
+
+  //factory action
+  factory action copia [1];
+
+
+}
+
+define behavior for YGDS_I_Booking_m implementation in class zbp_gds_i_booking_m unique //alias <alias_name>
+persistent table ygds_booking_m
+lock dependent by _Travel
+authorization dependent by _Travel
+early numbering
+//etag master <field_name>
+{
+  update;
+  delete;
+  field (readonly) booking_id;
+  field ( readonly ) travel_id;
+  association _Travel;
+  association _BookingSupp { create; }
+}
+
+define behavior for YGDS_I_BookingSupp_m implementation in class zbp_gds_i_book_sup_m unique //alias <alias_name>
+persistent table ygds_booking_sup
+lock dependent by _Travel
+authorization dependent by _Travel
+early numbering
+//etag master <field_name>
+{
+  update;
+  delete;
+  field (readonly) booking_supplement_id;
+  field ( readonly ) travel_id, booking_id ;
+  association _Booking;
+  association _Travel;
+
+}
